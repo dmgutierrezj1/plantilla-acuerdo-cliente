@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acuerdo Clientes - CAPITAL INVESTMENTS S.A.S. 2026</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>🤝 ACUERDO DE COMPRAVENTA MERCANTIL</h1>
+        <p><strong>CAPITAL INVESTMENTS S.A.S.</strong> | NIT: 901.055.873-8 | Villavicencio, Meta</p>
+        <p>Sucursal: <select id="sucursal"><option>Villavicencio HQ</option><option>Meta 1</option><option>Meta 2</option></select></p>
+        <div class="leyenda">
+            <strong>Código Comercio Arts.332-387 | Garantía Legal 6 Meses Vicios Ocultos</strong>
+        </div>
+    </header>
+
+    <main>
+        <form id="acuerdoForm">
+            <section class="datos-cliente">
+                <h2>📋 DATOS CLIENTE</h2>
+                <div class="grid-2">
+                    <div>
+                        <label>NIT/CC <span class="obligatorio">*</span></label>
+                        <input type="text" id="nitCliente" maxlength="12" placeholder="900123456-1" pattern="[0-9]{9,10}-[0-9]">
+                    </div>
+                    <div>
+                        <label>Razón Social/Nombre Completo <span class="obligatorio">*</span></label>
+                        <input type="text" id="razonSocial" placeholder="INMOBILIARIA META S.A.S.">
+                    </div>
+                    <div>
+                        <label>Dirección Completa <span class="obligatorio">*</span></label>
+                        <input type="text" id="direccion" placeholder="Cra 12 #45-67 Villavicencio">
+                    </div>
+                    <div>
+                        <label>Régimen Tributario</label>
+                        <select id="regimen">
+                            <option>Común</option>
+                            <option>Simplificado</option>
+                            <option>Responsable IVA</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <section class="objeto-venta">
+                <h2>🛒 OBJETO COMPRAVENTA (Mueble - Art.332 Cc)</h2>
+                <textarea id="objeto" rows="3" placeholder="50 Paneles solares 500W c/u / 20 Mesas ejecutivas madera..."></textarea>
+                <div class="grid-2">
+                    <div>
+                        <label>Valor Total (COP sin IVA) <span class="obligatorio">*</span></label>
+                        <input type="number" id="valorTotal" min="1000000" placeholder="125000000">
+                    </div>
+                    <div>
+                        <label>Plazo Entrega (días calendario) <span class="obligatorio">*</span></label>
+                        <input type="number" id="plazoEntrega" min="1" max="365" placeholder="30">
+                    </div>
+                </div>
+            </section>
+
+            <section class="checklist">
+                <h2>✅ CHECKLIST LEGAL (4 Ítems - 100% Requerido)</h2>
+                <table>
+                    <tr><td>1</td><td><strong>Objeto mueble singularizable</strong> (Art.332 Cc)</td><td><label><input type="radio" name="chk1" value="si"></label></td><td><label><input type="radio" name="chk1" value="no"></label></td></tr>
+                    <tr><td>2</td><td><strong>NIT/CC + RUT adjunto</strong></td><td><label><input type="radio" name="chk2" value="si"></label></td><td><label><input type="radio" name="chk2" value="no"></label></td></tr>
+                    <tr><td>3</td><td><strong>Precio cierto > $1M</strong> (sin IVA)</td><td><label><input type="radio" name="chk3" value="si"></label></td><td><label><input type="radio" name="chk3" value="no"></label></td></tr>
+                    <tr style="background:#ffebee;"><td>4</td><td><strong>Garantía 6 meses vicios ocultos</strong> <span style="color:#d32f2f;">(Art.383 Cc)</span></td><td><label><input type="radio" name="chk4" value="si"></label></td><td><label><input type="radio" name="chk4" value="no"></label></td></tr>
+                </table>
+                <div id="porcentaje" class="porcentaje">0/4 SÍ (0%)</div>
+            </section>
+
+            <div class="acciones">
+                <button type="button" onclick="validarYcalcular()">🔢 Validar & Calcular</button>
+                <button type="button" onclick="generarPDF()">📄 PDF Mercantil</button>
+                <button onclick="imprimirContrato()">🖨️ Imprimir Contrato</button>
+                <button onclick="resetForm()">🔄 Nuevo Cliente</button>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <p>CAPITAL INVESTMENTS S.A.S. | Código Comercio Arts.332-387 | Versión 1.0 Mayo 2026</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
